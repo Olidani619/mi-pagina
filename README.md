@@ -1,11 +1,10 @@
-# Feliz Día del Músico
+# Mi Página Web
 
-Sitio estático creado con HTML, CSS y JavaScript, preparado para GitHub Pages.
+Página web desarrollada con HTML, CSS y JavaScript.
 
-## Publicación en GitHub Pages
+## Contenido
 
-1. Sube el contenido del proyecto a un repositorio de GitHub.
-2. En **Settings → Pages**, selecciona la rama que contiene el proyecto y la carpeta raíz (`/`).
-3. Guarda los cambios. GitHub Pages publicará el sitio desde `index.html`.
-
-No se requieren compilación, dependencias ni servidor adicional.
+- Diseño web personalizado.
+- Reproductor de audio.
+- Archivos multimedia.
+- Diseño adaptable a dispositivos móviles.
