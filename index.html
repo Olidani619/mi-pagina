@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>¡Feliz Día del Músico! ♡</title>
+  <meta name="description" content="Una experiencia digital interactiva y romántica dedicada a una tecladista especial en el Día del Músico.">
+  <meta name="theme-color" content="#FCE4EC">
+
+  <!-- ==========================================================================
+       TIPOGRAFÍAS Y FUENTES (Con fallbacks nativos seguros para offline)
+       ========================================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Playfair+Display:ital,wght@0,500;0,700;1,400&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- Fondo Ambiental y Canvas de Partículas -->
+  <div class="ambient-background"></div>
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Barra de Acciones Flotantes (Superior) -->
+  <header class="top-actions-bar">
+    <button id="btn-home-back" class="action-btn-circle" title="Volver al inicio" aria-label="Volver al inicio">
+      <span>‹</span>
+    </button>
+    <div class="top-actions-spacer"></div>
+    <button id="btn-audio-toggle" class="action-btn-circle" title="Melodía ambiental y sonido" aria-label="Activar o pausar melodía">
+      <span id="audio-icon">🎵</span>
+    </button>
+  </header>
+
+  <!-- Contenedor Principal de la Experiencia -->
+  <main class="app-viewport">
+
+    <!-- ==========================================================================
+         PANTALLA DE BIENVENIDA
+         ========================================================================== -->
+    <section id="screen-welcome" class="screen-welcome">
+      <div class="welcome-card">
+        <!-- Ilustración de Teclado con Aura de Brillo -->
+        <div class="piano-illustration-wrapper">
+          <div class="piano-halo"></div>
+          <svg class="piano-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Círculo decorativo dorado suave -->
+            <circle cx="80" cy="80" r="70" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.8"/>
+            <!-- Silueta estilizada de teclado / piano romántico -->
+            <path d="M35 105C35 85 45 60 70 55C95 50 120 62 125 80C128 90 125 105 125 105H35Z" fill="url(#pinkBodyGrad)" stroke="#B85C85" stroke-width="1.5"/>
+            <!-- Teclas estilizadas en arco -->
+            <rect x="42" y="92" width="10" height="24" rx="2" fill="#FFF9FB" stroke="#EFA3BD"/>
+            <rect x="54" y="92" width="10" height="24" rx="2" fill="#FFF9FB" stroke="#EFA3BD"/>
+            <rect x="66" y="92" width="10" height="24" rx="2" fill="#FFF9FB" stroke="#EFA3BD"/>
+            <rect x="78" y="92" width="10" height="24" rx="2" fill="#FFF9FB" stroke="#EFA3BD"/>
+            <rect x="90" y="92" width="10" height="24" rx="2" fill="#FFF9FB" stroke="#EFA3BD"/>
+            <rect x="102" y="92" width="10" height="24" rx="2" fill="#FFF9FB" stroke="#EFA3BD"/>
+            <rect x="114" y="92" width="10" height="24" rx="2" fill="#FFF9FB" stroke="#EFA3BD"/>
+            <!-- Teclas negras estilizadas -->
+            <rect x="49" y="90" width="6" height="15" rx="1.5" fill="#3D1E2D"/>
+            <rect x="61" y="90" width="6" height="15" rx="1.5" fill="#3D1E2D"/>
+            <rect x="85" y="90" width="6" height="15" rx="1.5" fill="#3D1E2D"/>
+            <rect x="97" y="90" width="6" height="15" rx="1.5" fill="#3D1E2D"/>
+            <rect x="109" y="90" width="6" height="15" rx="1.5" fill="#3D1E2D"/>
+            <!-- Notas musicales doradas que emergen -->
+            <path d="M96 46C96 46 102 38 110 40M110 40V54M110 40C110 40 116 39 119 44M110 54A3 3 0 1 1 104 54A3 3 0 0 1 110 54Z" stroke="#D8B978" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="58" cy="46" r="3" fill="#EFA3BD"/>
+            <path d="M61 46V36C61 36 68 35 71 40" stroke="#EFA3BD" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Destellos luminosos -->
+            <path d="M48 64L50 58L52 64L58 66L52 68L50 74L48 68L42 66L48 64Z" fill="#D8B978" opacity="0.9"/>
+            <path d="M112 70L113 66L115 70L119 71L115 72L113 76L112 72L108 71L112 70Z" fill="#FFF9FB"/>
+            <!-- Gradientes para SVG -->
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F3E0BA"/>
+                <stop offset="0.5" stop-color="#D8B978"/>
+                <stop offset="1" stop-color="#B88A44"/>
+              </linearGradient>
+              <linearGradient id="pinkBodyGrad" x1="35" y1="55" x2="125" y2="105" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FCE4EC"/>
+                <stop offset="1" stop-color="#F8BBD0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <h1 class="welcome-title">
+          "Para la princesa que hace que mis días sean melodías y mis noches, canciones."
+        </h1>
+        <p class="welcome-subtitle">
+          Hoy quiero dedicarte algo muy especial.
+        </p>
+
+        <button id="btn-discover" class="btn-primary-glow" type="button">
+          Presiona AQUIIII❤️
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TARJETA PRINCIPAL
+         ========================================================================== -->
+    <section id="screen-main" class="screen-main">
+      
+      <!-- Encabezado de la Tarjeta -->
+      <div class="main-header">
+        <span class="badge-musical">✨ 22 de Noviembre ✨</span>
+        <h2 class="main-title">¡Feliz Día del Músico!</h2>
+        <p class="main-subtitle">"Para una princesa hermosa que merece todo lo lindo que la vida pueda dar❤️"</p>
+      </div>
+
+      <!-- Representación Visual y Teclado Musical Interactivo -->
+      <div class="piano-interactive-container">
+        <div class="piano-header-meta">
+          <span class="piano-label">🎹 Diseñado especial para tiii</span>
+          <span class="piano-hint mobile-hint">Desliza o toca las teclas ♪</span>
+          <span class="piano-hint pc-hint">Toca las teclas ♪</span>
+        </div>
+        
+        <div class="piano-keyboard" id="interactive-keyboard">
+          <!-- Teclas Blancas -->
+          <div class="white-keys">
+            <button class="key-white" data-note="C4" data-freq="261.63" data-key="a" aria-label="Tecla Do (Tecla A)"><span class="key-pc-hint">C</span><span class="key-label">Do</span></button>
+            <button class="key-white" data-note="D4" data-freq="293.66" data-key="s" aria-label="Tecla Re (Tecla S)"><span class="key-pc-hint">D</span><span class="key-label">Re</span></button>
+            <button class="key-white" data-note="E4" data-freq="329.63" data-key="d" aria-label="Tecla Mi (Tecla D)"><span class="key-pc-hint">E</span><span class="key-label">Mi</span></button>
+            <button class="key-white" data-note="F4" data-freq="349.23" data-key="f" aria-label="Tecla Fa (Tecla F)"><span class="key-pc-hint">F</span><span class="key-label">Fa</span></button>
+            <button class="key-white" data-note="G4" data-freq="392.00" data-key="g" aria-label="Tecla Sol (Tecla G)"><span class="key-pc-hint">G</span><span class="key-label">Sol</span></button>
+            <button class="key-white" data-note="A4" data-freq="440.00" data-key="h" aria-label="Tecla La (Tecla H)"><span class="key-pc-hint">A</span><span class="key-label">La</span></button>
+            <button class="key-white" data-note="B4" data-freq="493.88" data-key="j" aria-label="Tecla Si (Tecla J)"><span class="key-pc-hint">B</span><span class="key-label">Si</span></button>
+            <button class="key-white" data-note="C5" data-freq="523.25" data-key="k" aria-label="Tecla Do agudo (Tecla K)"><span class="key-pc-hint">C</span><span class="key-label">Do</span></button>
+          </div>
+          <!-- Teclas Negras -->
+          <div class="black-keys">
+            <div class="key-black-slot"><button class="key-black" data-note="C#4" data-freq="277.18" data-key="w" aria-label="Tecla Do sostenido (Tecla W)"><span class="key-pc-hint-black">C#</span></button></div>
+            <div class="key-black-slot"><button class="key-black" data-note="D#4" data-freq="311.13" data-key="e" aria-label="Tecla Re sostenido (Tecla E)"><span class="key-pc-hint-black">D#</span></button></div>
+            <div class="key-black-slot"></div><!-- Espacio entre Mi y Fa -->
+            <div class="key-black-slot"><button class="key-black" data-note="F#4" data-freq="369.99" data-key="t" aria-label="Tecla Fa sostenido (Tecla T)"><span class="key-pc-hint-black">F#</span></button></div>
+            <div class="key-black-slot"><button class="key-black" data-note="G#4" data-freq="415.30" data-key="y" aria-label="Tecla Sol sostenido (Tecla Y)"><span class="key-pc-hint-black">G#</span></button></div>
+            <div class="key-black-slot"><button class="key-black" data-note="A#4" data-freq="466.16" data-key="u" aria-label="Tecla La sostenido (Tecla U)"><span class="key-pc-hint-black">A#</span></button></div>
+            <div class="key-black-slot"></div><!-- Espacio final -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicador que invita a explorar -->
+      <div class="explore-indicator">
+        <span class="dot"></span>
+        <span>Toca cada tarjeta para descubrir su mensaje</span>
+        <span class="dot"></span>
+      </div>
+
+      <!-- Menú de 5 Experiencias Interactivas -->
+      <div class="experiences-menu">
+
+        <!-- BOTÓN 1: UNA MELODÍA PARA TI -->
+        <button class="exp-card-btn" data-modal="modal-song">
+          <div class="exp-icon-box">🎵</div>
+          <div class="exp-content">
+            <span class="exp-title">Hay una canción para ti</span>
+            <span class="exp-subtitle">Una melodía que sé cuánto te encanta</span>
+          </div>
+          <span class="exp-arrow">›</span>
+        </button>
+
+        <!-- BOTÓN 2: ALGO QUE QUIERO DECIRTE -->
+        <button class="exp-card-btn" data-modal="modal-letter">
+          <div class="exp-icon-box">💌</div>
+          <div class="exp-content">
+            <span class="exp-title">Tengo algo que decirte</span>
+            <span class="exp-subtitle">Una pequeña carta digital para leer con calma</span>
+          </div>
+          <span class="exp-arrow">›</span>
+        </button>
+
+        <!-- BOTÓN 3: TRES COSAS QUE ADMIRO DE TI -->
+        <button class="exp-card-btn" data-modal="modal-reasons">
+          <div class="exp-icon-box">✨</div>
+          <div class="exp-content">
+            <span class="exp-title">Tres pequeñas razones</span>
+            <span class="exp-subtitle">Cosas que te hacen única</span>
+          </div>
+          <span class="exp-arrow">›</span>
+        </button>
+
+        <!-- BOTÓN 4: SI FUERAS UNA CANCIÓN -->
+        <button class="exp-card-btn" data-modal="modal-melody-quote">
+          <div class="exp-icon-box">🎹</div>
+          <div class="exp-content">
+            <span class="exp-title">Si te dedicara una canción...</span>
+            <span class="exp-subtitle">En definitiva sería esta...</span>
+          </div>
+          <span class="exp-arrow">›</span>
+        </button>
+
+        <!-- BOTÓN 5: UNA ÚLTIMA SORPRESA -->
+        <button class="exp-card-btn special-gold" data-modal="modal-gift">
+          <div class="exp-icon-box">🎁</div>
+          <div class="exp-content">
+            <span class="exp-title">Hay algo más para ti...</span>
+            <span class="exp-subtitle">Una pequeña sorpresa final</span>
+          </div>
+          <span class="exp-arrow">›</span>
+        </button>
+
+      </div>
+
+      <!-- Botón para volver a la pantalla de bienvenida -->
+      <button id="btn-back-welcome" class="btn-return-home" type="button">
+        <span>↺</span> Inicio
+      </button>
+
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODALES DE EXPERIENCIAS
+       ========================================================================== -->
+
+  <!-- MODAL 1: UNA MELODÍA PARA TI (YOUTUBE) -->
+  <div id="modal-song" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="title-modal-song">
+    <div class="modal-window">
+      <button class="modal-close-btn" aria-label="Cerrar ventana">×</button>
+      <span class="modal-header-tag">🎵 Tu Melodía Especial</span>
+      <h3 id="title-modal-song" class="modal-title">Tu canción favorita</h3>
+      
+      <audio id="song-audio" src="assets/audio/Bella%20y%20Bestia.mpeg" preload="none" hidden></audio>
+
+      <!-- Tarjeta Romántica Central con las Palabras en Medio -->
+      <div class="melody-card-stage">
+        
+        <!-- Vinilo decorativo con halo de luz -->
+        <div class="melody-disc-wrapper">
+          <div class="melody-disc-halo"></div>
+          <div class="melody-vinyl" id="melody-vinyl">
+            <div class="melody-vinyl-center">♪</div>
+          </div>
+        </div>
+
+        <!-- Ecualizador de ondas sonoras -->
+        <div class="melody-soundwave-bars" id="melody-soundwave">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+
+        <!-- Palabras en el medio -->
+        <div class="melody-center-words">
+          <div class="letter-decorative-corner tl"></div>
+          <div class="letter-decorative-corner br"></div>
+          <p class="melody-quote-lead">"Hay canciones que no solo se escuchan..."</p>
+          <p class="melody-quote-main">
+            Desde el momento en que me dijiste que esta era tu melodía favorita, supe que tenía que dedicártela de una manera especial.
+          </p>
+          <p class="melody-quote-dedication">
+            Esta melodía suena para ti, inspirada en tu pasión, en tus gustos a los que (aunque no lo creas) presto atención en cada mensaje que me envías. 🎶
+          </p>
+        </div>
+
+        <!-- Botón interactivo de Play / Pausa -->
+        <div class="melody-player-controls">
+          <button id="btn-toggle-song" class="btn-melody-playback" type="button" aria-label="Reproducir melodía">
+            <span id="btn-toggle-song-icon">▶</span>
+            <span id="btn-toggle-song-text">Reproducir</span>
+          </button>
+        </div>
+
+        <p class="video-caption">"Porque hay melodías que simplemente reflejan quien eres❤️"</p>
+
+        <a 
+          href="https://www.youtube.com/watch?v=FvVEJDknGhA" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-yt-direct"
+          title="Escuchar en la app o web de YouTube si lo prefieres">
+          <span>Abrir en YouTube</span> ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: ALGO QUE QUIERO DECIRTE (CARTA DIGITAL) -->
+  <div id="modal-letter" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="title-modal-letter">
+    <div class="modal-window">
+      <button class="modal-close-btn" aria-label="Cerrar ventana">×</button>
+      <span class="modal-header-tag">💌 Desde mi corazón</span>
+      <h3 id="title-modal-letter" class="modal-title">Tengo algo que decirte</h3>
+
+      <div class="letter-container">
+        <!-- Sobre cerrado inicial -->
+        <div class="envelope-box" id="letter-envelope" title="Toca el sobre para abrir la carta">
+          <div class="envelope-flap"></div>
+          <div class="wax-seal">𝄞</div>
+          <span class="envelope-tap-hint">Toca para abrir ✨</span>
+        </div>
+
+        <!-- Papel de la carta con el texto editable -->
+        <div class="letter-paper" id="letter-content">
+          <div class="letter-decorative-corner tl"></div>
+          <div class="letter-decorative-corner br"></div>
+          <div class="letter-text-body">
+            <!-- ==============================================================
+                 TEXTO DE LA CARTA (FÁCILMENTE EDITABLE)
+                 ============================================================== -->
+            <p>Hoy es un día especial, sí, es el día de músico, pero más que un día, quiero decirte algo muy importante.</p>
+            <p>Más que la música, es quien eres tu, alguien tan especial, tan linda, tan única. Sí, me encanta como eres, y no niego que haces que mis días sean diferentes.</p>
+            <p>Es por eso que he hecho todo esto para tí, para que sepas cuanto significas para mí, que ahora tengo una fuente de inspiración, y eres tú, YOISMAR VALENTINA</p>
+            <p>Eres esa princesa por quien vale la pena hacer cosas especiales. Y no me cansaré, mi sueño es, siempre verte sonreír aún cuando no nos entendamos.</p>
+            <p>No negaré que me encantas como eres, así, tan única, tan especial, tan tierna, tan coqueta, tan tú, tan honesta...</p>
+            <p>Sé que aún no te conozco del todo, pero lo poco que he conocido, me ha dado motivos para inspirarme en esos hermosos ojitos preciosos que tienes...</p>
+            <p>¡Feliz Día del Músico! ¡Para mi Músico Favorita!</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: TRES PEQUEÑAS RAZONES (3D FLIP CARDS) -->
+  <div id="modal-reasons" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="title-modal-reasons">
+    <div class="modal-window">
+      <button class="modal-close-btn" aria-label="Cerrar ventana">×</button>
+      <span class="modal-header-tag">✨ Tres pequeñas razones</span>
+      <h3 id="title-modal-reasons" class="modal-title">Tres cosas que admiro de ti</h3>
+      <p class="reasons-instruction">
+        Toca cada tarjeta para voltearla y descubrir su mensaje
+      </p>
+
+      <div class="reasons-container">
+        
+        <!-- Tarjeta 1: Tu pasión -->
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-left">
+                <div class="flip-front-icon">🔥</div>
+                <div class="flip-front-title">Tu Servicio a Dios</div>
+              </div>
+              <span class="flip-hint">Toca ↺</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Encontrar a alguien que sirva a Dios con pasión y dedicación es difícil, pero tú lo haces con autenticidad y admiro eso de ti</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Tu talento -->
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-left">
+                <div class="flip-front-icon">🎹</div>
+                <div class="flip-front-title">Tu Talento</div>
+              </div>
+              <span class="flip-hint">Toca ↺</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Tu talento es algo especial, y aunque pienses que no es mucho, es digno de admirar que toques el teclado. Sé que con el tiempo, serás mejor de lo que eres hoy.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Tu esencia -->
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-left">
+                <div class="flip-front-icon">🌸</div>
+                <div class="flip-front-title">Tu esencia</div>
+              </div>
+              <span class="flip-hint">Toca ↺</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Tu forma de ser, tan única y especial, son las cosas que me encantan de ti. Tan tierna y dulce, pero a la vez fuerte...</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: SI FUERAS UNA CANCIÓN -->
+  <div id="modal-melody-quote" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="title-modal-quote">
+    <div class="modal-window">
+      <button class="modal-close-btn" aria-label="Cerrar ventana">×</button>
+      <span class="modal-header-tag">🎹 OFELIA</span>
+      <h3 id="title-modal-quote" class="modal-title">Si te dedicara una canción...</h3>
+
+      <audio id="quote-audio" src="assets/audio/Ofelia.mpeg" preload="none" hidden></audio>
+
+      <div class="song-art-container">
+        <!-- Disco de vinilo decorativo animado -->
+        <div class="vinyl-composition" id="quote-vinyl">
+          <div class="vinyl-label">♪</div>
+        </div>
+
+        <!-- Cita artística con las palabras en el centro -->
+        <div class="song-lyric-quote">
+          <p>"Te dedico Ofelia, una melodía hermosa, que habla de una cosa...</p>
+          <p class="song-lyric-followup">Cómo pasar del amor, a la locura... Espero que te guste..."</p>
+        </div>
+
+        <!-- Simulación de onda sonora dorada -->
+        <div class="soundwave-mock" id="quote-soundwave">
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+        </div>
+
+        <!-- Botón interactivo de Play / Pausa para esta canción -->
+        <div class="melody-player-controls quote-player-controls">
+          <button id="btn-toggle-quote-song" class="btn-melody-playback" type="button" aria-label="Reproducir melodía">
+            <span id="btn-toggle-quote-icon">▶</span>
+            <span id="btn-toggle-quote-text">Reproducir</span>
+          </button>
+        </div>
+
+        <a 
+          href="https://www.youtube.com/watch?v=ParXRr1IO8w" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-yt-direct"
+          title="Escuchar en la app o web de YouTube">
+          <span>Abrir en YouTube</span> ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: UNA ÚLTIMA SORPRESA (REGALO) -->
+  <div id="modal-gift" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="title-modal-gift">
+    <div class="modal-window">
+      <button class="modal-close-btn" aria-label="Cerrar ventana">×</button>
+      <span class="modal-header-tag">🎁 Para ti</span>
+      <h3 id="title-modal-gift" class="modal-title">Hay algo más para ti...</h3>
+
+      <div class="gift-experience-box">
+        
+        <!-- Caja de regalo interactiva -->
+        <div id="interactive-gift" class="gift-box-interactive" title="Toca la caja para abrir tu sorpresa">
+          <div class="gift-box-lid" id="gift-lid">
+            <span class="gift-bow">🎀</span>
+          </div>
+          <div class="gift-box-body">
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+          </div>
+        </div>
+        <p id="gift-prompt" class="gift-instruction">Toca la caja para abrir ✨</p>
+
+        <!-- Mensaje final revelado con efecto grandioso -->
+        <div id="surprise-final-msg" class="surprise-revealed">
+          <div class="surprise-card-inner">
+            <p class="surprise-text">
+              Nunca cambies, sigue siendo quien eres, y que siempre tengas sueños por alcanzar y motivos para seguir haciendo lo que amas.
+            </p>
+            <p class="surprise-text">
+              Sigue sonriendo, que cada sonrisa de tu rostro, cada mirada de tus ojos, y cada gesto de tu corazón, son cosas que me inspiran a ser mejor persona. Tú lo sabes, significas mucho para mii❤️
+            </p>
+            <span class="surprise-highlight">
+              ¡Feliz Día del Músico! ❤️
+            </span>
+
+            <button id="btn-reopen-gift" class="btn-reopen-gift" type="button">
+              <span>↻</span> Volver
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
